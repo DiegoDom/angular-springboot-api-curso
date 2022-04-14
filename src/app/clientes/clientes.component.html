@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="text-secondary my-4">Listado de clientes</h4>
+            <div>
+                <a class="btn btn-primary" [routerLink]="['/clientes/form']">
+                    <span>Crear cliente </span>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive-sm">
+            <table class="table table-sm table-striped table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="text-center">id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col" class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="clientes.length">
+                    <tr *ngFor="let cliente of clientes">
+                        <th scope="row" class="text-center" style="width: 50px;">{{cliente.id}}</th>
+                        <td>{{cliente.nombre}}</td>
+                        <td>{{cliente.apellido | uppercase}}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.createdAt | date:"fullDate"}}</td>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-primary mr-2" [routerLink]="['/clientes/form', cliente.id]">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <button class="btn btn-sm btn-danger" (click)="delete(cliente)">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="!clientes.length">
+                    <tr>
+                        <td class="text-center table-warning" colspan="6">
+                            <h6>Aún no hay registros de clientes en el sistema.</h6>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<app-loader *ngIf="loading"></app-loader>

@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="text-secondary my-4">Listado de cursos</h4>
+            <button class="btn btn-primary m-3 float-right" type="button" (click)="handleChangeHabilitar()">
+            {{ habilitar ? 'Ocultar': 'Mostrar' }} lista
+          </button>
+        </div>
+        <ul class="list-group" *ngIf="habilitar">
+            <li class="list-group-item" *ngFor="let curso of listaCurso">{{curso}}</li>
+        </ul>
+    </div>
+</div>

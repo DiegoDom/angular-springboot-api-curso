@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+.main {
+    min-height: calc(100vh - 116px);
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    align-items: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    justify-content: center;
+    margin: auto 0 0 0;
+}
+
+footer a {
+    color: white;
+    font-weight: bold;
+}
+
+table td {
+    white-space: nowrap;
+}
+
+.btn.btn-regresar {
+    color: #f86c6b;
+    background-color: #fff;
+    border-color: #fff;
+    cursor: pointer;
+}
+
+.btn.btn-regresar:hover,
+.btn.btn-regresar.hover {
+    color: #f86c6b;
+    cursor: pointer;
+}
+
+.btn.btn-regresar:focus,
+.btn.btn-regresar.focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 0;
+    color: #f86c6b;
+    cursor: pointer;
+}

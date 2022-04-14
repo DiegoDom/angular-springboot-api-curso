@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="text-secondary my-4">{{ titulo }} cliente</h4>
+            <a class="btn btn-regresar" [routerLink]="['/clientes']">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                <span> Regresar</span>
+            </a>
+        </div>
+        <form (ngSubmit)="create()" #clienteForm="ngForm">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <div>
+                    <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="cliente.nombre" required minlength="4" #nombre="ngModel" />
+                </div>
+                <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <span *ngIf="nombre.errors.required">El nombre es requerido</span>
+                    <span *ngIf="nombre.errors.minlength">El nombre es debe tener al menos 4 carácteres</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <div>
+                    <input type="text" id="apellido" class="form-control" name="apellido" [(ngModel)]="cliente.apellido" required #apellido="ngModel" autocomplete="new-lastname" />
+                </div>
+                <div class="text-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                    <span *ngIf="apellido.errors.required">El apellido es requerido</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div>
+                    <input type="text" id="email" class="form-control" name="email" [(ngModel)]="cliente.email" required email #email="ngModel" autocomplete="new-email" />
+                </div>
+                <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <span *ngIf="email.errors.required">El email es requerido</span>
+                    <span *ngIf="email.errors.email">Ingresa un email válido</span>
+                </div>
+            </div>
+            <button class="btn btn-primary mb-3 float-right" role="button" [disabled]="!clienteForm.form.valid">
+              <span>Guardar </span>
+              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
+</div>
+<app-loader *ngIf="loading"></app-loader>
